@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détails de la colonie - SummerCamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6a",
+                        "primary-content": "#0d1b13",
+                        "background-light": "#f8fcfa",
+                        "background-dark": "#102217",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2e22",
+                        "border-light": "#e7f3ec",
+                        "border-dark": "#2a4034",
+                        "text-main": "#0d1b13",
+                        "text-muted": "#4c9a6b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display overflow-x-hidden selection:bg-primary selection:text-primary-content">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md px-6 lg:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-text-main dark:text-white">
+<div class="text-primary">
+<span class="material-symbols-outlined filled text-3xl">camping</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SummerCamp</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Colonies</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Activités</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">À propos</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-border-light dark:border-border-dark overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="text-text-muted flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-text-main dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-muted px-4 pl-2 text-base font-normal leading-normal" placeholder="Rechercher"/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-primary-content hover:bg-primary/90 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Connexion</span>
+</button>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<!-- Hero Section -->
+<div class="px-4 lg:px-40 flex flex-1 justify-center py-6">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 w-full">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm text-text-muted mb-6">
+<a class="hover:text-primary" href="#">Accueil</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">Colonies Été 2024</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-text-main dark:text-white font-medium">Aventure Alpes</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
+<!-- Left Column: Content -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Hero Image & Title -->
+<div class="relative flex min-h-[400px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-2xl items-start justify-end px-6 pb-8 md:px-10 md:pb-10 overflow-hidden shadow-lg" data-alt="Beautiful summer landscape in the French Alps with mountains and a lake" style='background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfSrzEiFzEebkkcdxZslxTkfq8-49fqVvS7aJjXOvkp8k7K_LdegDXK0Ev6U-S5uabhCcXMWdIGz55jWCDAb3lIiEp9qPn1-3g3zMF2jiEYioL9xH6R_gTgvWVgUM8ua8TF_TmuA7Krf6WqvGtmCIl5AVpnsowGELoMCPtCURF96xwjfx96q19hy0Bn8uO3wmCGi-ONdrHV8MBa-69XiuUfEF3Ppbv-aip4DFuUcKEfSvAy2qd0wd0i5tbQI9zZ-7N3N0vA1uUNw");'>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-white/90 dark:bg-black/80 backdrop-blur text-text-main dark:text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                                    Chamonix, France
+                                </span>
+<span class="bg-primary text-primary-content text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">face</span>
+                                    8-12 ans
+                                </span>
+</div>
+<div class="flex flex-col gap-2 text-left z-10">
+<h1 class="text-white text-3xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                                    Aventure dans les Alpes
+                                </h1>
+<p class="text-white/90 text-sm md:text-lg font-medium max-w-xl">
+                                    Une expérience inoubliable pour vos enfants au cœur de la nature, entre randonnées, découvertes et nouveaux amis.
+                                </p>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="sticky top-[73px] z-40 bg-background-light dark:bg-background-dark pt-2 pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+<div class="flex border-b border-border-light dark:border-border-dark overflow-x-auto no-scrollbar gap-8">
+<a class="flex items-center gap-2 border-b-[3px] border-primary text-text-main dark:text-white pb-3 pt-2 whitespace-nowrap" href="#description">
+<span class="text-sm font-bold">Description</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-text-muted hover:text-primary hover:border-primary/30 transition-all pb-3 pt-2 whitespace-nowrap" href="#programme">
+<span class="text-sm font-bold">Programme</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-text-muted hover:text-primary hover:border-primary/30 transition-all pb-3 pt-2 whitespace-nowrap" href="#hebergement">
+<span class="text-sm font-bold">Hébergement</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-text-muted hover:text-primary hover:border-primary/30 transition-all pb-3 pt-2 whitespace-nowrap" href="#avis">
+<span class="text-sm font-bold">Avis (24)</span>
+</a>
+</div>
+</div>
+<!-- Description Section -->
+<div class="flex flex-col gap-6" id="description">
+<h3 class="text-2xl font-bold">À propos du séjour</h3>
+<div class="prose prose-stone dark:prose-invert max-w-none text-text-main/80 dark:text-white/80 leading-relaxed">
+<p>
+                                    Plongez au cœur de la vallée de Chamonix pour une semaine d'évasion totale ! Ce séjour est conçu pour les jeunes explorateurs désireux de découvrir la montagne autrement. Encadrés par des guides de haute montagne certifiés et des animateurs passionnés, vos enfants vivront des moments forts en toute sécurité.
+                                </p>
+<p class="mt-4">
+                                    Au-delà des activités sportives, nous mettons un point d'honneur à sensibiliser les jeunes à l'environnement. Ateliers sur la faune alpine, lecture de cartes et observation des étoiles sont au programme pour éveiller leur curiosité.
+                                </p>
+</div>
+<!-- Highlights Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<div class="flex gap-4 p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<h4 class="font-bold text-base mb-1">Nature &amp; Découverte</h4>
+<p class="text-sm text-text-muted">Faune, flore et écologie au programme.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h4 class="font-bold text-base mb-1">Sports d'Eau Vive</h4>
+<p class="text-sm text-text-muted">Rafting et canyoning adaptés aux débutants.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<div>
+<h4 class="font-bold text-base mb-1">Veillées Animées</h4>
+<p class="text-sm text-text-muted">Feux de camp, contes et légendes.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<h4 class="font-bold text-base mb-1">Esprit d'Équipe</h4>
+<p class="text-sm text-text-muted">Jeux coopératifs et vie en communauté.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Programme Timeline -->
+<div class="flex flex-col gap-6 pt-8 border-t border-border-light dark:border-border-dark" id="programme">
+<h3 class="text-2xl font-bold">Programme de la semaine</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 border border-border-light dark:border-border-dark">
+<div class="grid grid-cols-[40px_1fr] gap-x-4">
+<!-- Day 1 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div class="w-[2px] bg-border-light dark:bg-border-dark h-full grow"></div>
+</div>
+<div class="flex flex-col pb-8">
+<h4 class="text-lg font-bold">Jour 1: Arrivée et Installation</h4>
+<p class="text-text-muted text-sm mt-1">Accueil des participants, installation dans les chambres et jeux de connaissance pour briser la glace.</p>
+</div>
+<!-- Day 2 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined">hiking</span>
+</div>
+<div class="w-[2px] bg-border-light dark:bg-border-dark h-full grow"></div>
+</div>
+<div class="flex flex-col pb-8">
+<h4 class="text-lg font-bold">Jour 2: Randonnée Découverte</h4>
+<p class="text-text-muted text-sm mt-1">Départ matinal pour le Lac Blanc. Pique-nique avec vue sur le Mont-Blanc. Atelier d'orientation l'après-midi.</p>
+</div>
+<!-- Day 3 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined">kayaking</span>
+</div>
+<div class="w-[2px] bg-border-light dark:bg-border-dark h-full grow"></div>
+</div>
+<div class="flex flex-col pb-8">
+<h4 class="text-lg font-bold">Jour 3: Activités Nautiques</h4>
+<p class="text-text-muted text-sm mt-1">Initiation au rafting sur l'Arve encadrée par des moniteurs diplômés. Sensations garanties !</p>
+</div>
+<!-- Day 4 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined">forest</span>
+</div>
+<div class="w-[2px] bg-border-light dark:bg-border-dark h-full grow"></div>
+</div>
+<div class="flex flex-col pb-8">
+<h4 class="text-lg font-bold">Jour 4: Grands Jeux en Forêt</h4>
+<p class="text-text-muted text-sm mt-1">Grande chasse au trésor et construction de cabanes. Soirée "Boum" pour fêter la fin du séjour.</p>
+</div>
+<!-- Day 5 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined">cottage</span>
+</div>
+</div>
+<div class="flex flex-col">
+<h4 class="text-lg font-bold">Jour 5: Départ</h4>
+<p class="text-text-muted text-sm mt-1">Rangement, derniers échanges de contacts et départ en autocar vers 14h.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accommodation -->
+<div class="flex flex-col gap-6 pt-8 border-t border-border-light dark:border-border-dark" id="hebergement">
+<h3 class="text-2xl font-bold">Hébergement &amp; Restauration</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-1 h-64 rounded-2xl bg-cover bg-center" data-alt="Interior of a cozy wooden chalet dormitory with bunk beds" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDw31pQk0GQVDOG61jdRqMFBLwI32SH19tNRwxNsulYru4FWg_QDEkuz9DwBdw0WPloZNFSyGJAwk_9ubMVHpsrpEOzhD6Uj_ZXgMo4mH3gs-GNL3h-wleH2WSDJ_d89PncST6VkbWtd-jYszyTIA6TdbsLT8K3G_U9ZFBLEpJ6U0RboMhlH_cR6m1wc9gocct49Z2fqpaDT9pJ6REbo3j2xYe2pZyMw5R_Fc7T3FiCoZsQwWLKDn4nWA8yDn5SPU7QERQvkkQMJg");'>
+</div>
+<div class="col-span-1 flex flex-col justify-center gap-4">
+<h4 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bed</span>
+                                        Chalet "Les Marmottes"
+                                    </h4>
+<p class="text-text-muted text-sm">
+                                        Les enfants sont hébergés dans un chalet traditionnel savoyard entièrement rénové. Chambres de 4 à 6 lits avec sanitaires privatifs ou sur le palier.
+                                    </p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Pension complète incluse</span>
+</li>
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Repas équilibrés et locaux</span>
+</li>
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Régimes spéciaux sur demande</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Reviews -->
+<div class="flex flex-col gap-6 pt-8 border-t border-border-light dark:border-border-dark" id="avis">
+<div class="flex items-center justify-between">
+<h3 class="text-2xl font-bold">Ce qu'en pensent les parents</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined filled text-yellow-400">star</span>
+<span class="font-bold text-lg">4.8</span>
+<span class="text-text-muted text-sm">(24 avis)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Review Card 1 -->
+<div class="p-6 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">M</div>
+<div>
+<p class="font-bold text-sm">Marie Dupont</p>
+<p class="text-xs text-text-muted">Juin 2023</p>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+</div>
+</div>
+<p class="text-sm italic text-text-main/80 dark:text-white/80">"Mon fils Théo est revenu enchanté ! L'équipe d'animation était top et il a adoré le rafting. On réservera à nouveau l'an prochain."</p>
+</div>
+<!-- Review Card 2 -->
+<div class="p-6 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">P</div>
+<div>
+<p class="font-bold text-sm">Pierre Martin</p>
+<p class="text-xs text-text-muted">Juillet 2023</p>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined filled text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+</div>
+<p class="text-sm italic text-text-main/80 dark:text-white/80">"Organisation impeccable. Un peu dommage pour la pluie le mardi mais les animateurs ont su rebondir avec des jeux d'intérieur géniaux."</p>
+</div>
+</div>
+<button class="self-center mt-2 text-primary font-bold hover:underline">Voir tous les avis</button>
+</div>
+<!-- FAQ Accordion (Styled as Details) -->
+<div class="flex flex-col gap-4 pt-8 border-t border-border-light dark:border-border-dark mb-10">
+<h3 class="text-2xl font-bold mb-2">Questions fréquentes</h3>
+<details class="group rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark open:border-primary/50 transition-colors">
+<summary class="flex cursor-pointer items-center justify-between p-4 font-medium list-none">
+<span>Que faut-il mettre dans la valise ?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-sm text-text-muted">
+                                    Une liste détaillée (trousseau) vous sera envoyée après l'inscription. Prévoyez des vêtements chauds pour le soir, un k-way, de bonnes chaussures de marche et un sac de couchage.
+                                </div>
+</details>
+<details class="group rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark open:border-primary/50 transition-colors">
+<summary class="flex cursor-pointer items-center justify-between p-4 font-medium list-none">
+<span>Comment se passe le transport ?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-sm text-text-muted">
+                                    Le départ se fait en train depuis la Gare de Lyon (Paris) avec une équipe d'animateurs. Possibilité d'amener votre enfant directement sur place.
+                                </div>
+</details>
+</div>
+</div>
+<!-- Right Column: Sticky Sidebar -->
+<div class="lg:col-span-4 relative">
+<div class="sticky top-24 flex flex-col gap-6">
+<!-- Booking Card -->
+<div class="rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark p-6 shadow-xl shadow-black/5">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<p class="text-sm text-text-muted font-medium">Prix par enfant</p>
+<p class="text-3xl font-black text-text-main dark:text-white">550€</p>
+</div>
+<div class="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check</span>
+                                        Dispo
+                                    </div>
+</div>
+<div class="flex flex-col gap-4 mb-6">
+<!-- Date Select -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold uppercase text-text-muted">Dates du séjour</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark px-4 py-3 text-sm font-medium focus:border-primary focus:ring-primary">
+<option>08 Juil - 12 Juil 2024</option>
+<option>15 Juil - 19 Juil 2024</option>
+<option>22 Juil - 26 Juil 2024</option>
+<option disabled="">05 Aout - 09 Aout 2024 (Complet)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-text-muted">expand_more</span>
+</div>
+</div>
+<!-- Participants Select -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold uppercase text-text-muted">Participants</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark px-4 py-3 text-sm font-medium focus:border-primary focus:ring-primary">
+<option value="1">1 Enfant</option>
+<option value="2">2 Enfants</option>
+<option value="3">3 Enfants</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-text-muted">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-primary-content text-base font-bold py-3.5 px-6 rounded-full shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+                                        Réserver cette colonie
+                                    </button>
+<p class="text-center text-xs text-text-muted">Paiement sécurisé · Annulation gratuite jusqu'à 30j</p>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark p-5 flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">verified_user</span>
+<div>
+<p class="font-bold text-sm">Encadrement Certifié</p>
+<p class="text-xs text-text-muted mt-0.5">1 animateur pour 8 enfants. Équipe diplômée BAFA/BAFD.</p>
+</div>
+</div>
+<div class="h-[1px] bg-border-light dark:bg-border-dark w-full"></div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">medical_services</span>
+<div>
+<p class="font-bold text-sm">Santé &amp; Sécurité</p>
+<p class="text-xs text-text-muted mt-0.5">Assistant sanitaire présent 24/24h sur le centre.</p>
+</div>
+</div>
+</div>
+<!-- Help Box -->
+<div class="flex items-center gap-3 px-4">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="font-bold text-sm">Une question ?</p>
+<a class="text-xs text-primary font-bold hover:underline" href="#">Discuter avec un conseiller</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

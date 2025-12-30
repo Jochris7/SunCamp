@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page de paiement - Camp d'été</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6a",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102217",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d1b13] dark:text-white transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#e7f3ec] dark:border-[#1e3a29]">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">camping</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Camp d'été</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Accueil</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Séjours</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-[#0d1b13] text-sm font-bold hover:opacity-90 transition-opacity">
+<span class="truncate">Mon Compte</span>
+</button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-[#0d1b13] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-10 py-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 py-4 mb-4 text-sm md:text-base">
+<a class="text-primary/80 font-medium hover:text-primary" href="#">Panier</a>
+<span class="text-primary/60">/</span>
+<a class="text-primary/80 font-medium hover:text-primary" href="#">Détails</a>
+<span class="text-primary/60">/</span>
+<span class="text-[#0d1b13] dark:text-white font-bold border-b-2 border-primary">Paiement</span>
+<span class="text-gray-400 dark:text-gray-600">/</span>
+<span class="text-gray-400 dark:text-gray-600">Confirmation</span>
+</div>
+<!-- Page Heading -->
+<div class="mb-10">
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Finaliser votre inscription</h1>
+<p class="text-gray-600 dark:text-gray-400">Sécurisez la place de votre enfant pour cet été en complétant le paiement.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative">
+<!-- Left Column: Payment Methods -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-8">
+<!-- Selection Switcher -->
+<div class="flex flex-col sm:flex-row gap-4 p-1.5 bg-white dark:bg-[#1A2C22] rounded-lg border border-[#e7f3ec] dark:border-[#2a4536]">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-primary text-[#0d1b13] font-bold shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+                            Carte bancaire
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-full text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-[#233a2d] transition-all">
+<span class="material-symbols-outlined text-[20px]">store</span>
+                            Payer en agence
+                        </button>
+</div>
+<!-- Payment Form Container -->
+<div class="bg-white dark:bg-[#1A2C22] rounded-lg p-6 md:p-8 border border-[#e7f3ec] dark:border-[#2a4536] shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold">Détails de la carte</h3>
+<div class="flex gap-2 opacity-70">
+<!-- Placeholders for card logos using text/css shapes or material icons for simplicity in this context -->
+<div class="h-6 w-10 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center text-[10px] font-bold tracking-tighter text-gray-500">VISA</div>
+<div class="h-6 w-10 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center text-[10px] font-bold tracking-tighter text-gray-500">MC</div>
+</div>
+</div>
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold ml-2">Titulaire de la carte</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">person</span>
+<input class="w-full h-12 pl-12 pr-4 bg-background-light dark:bg-[#102217] border border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-full outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="ex: Jean Dupont" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold ml-2">Numéro de carte</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">credit_card</span>
+<input class="w-full h-12 pl-12 pr-4 bg-background-light dark:bg-[#102217] border border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-full outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined text-sm">lock</span>
+</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold ml-2">Date d'expiration</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">calendar_month</span>
+<input class="w-full h-12 pl-12 pr-4 bg-background-light dark:bg-[#102217] border border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-full outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="MM/AA" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold ml-2">CVC</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">security</span>
+<input class="w-full h-12 pl-12 pr-4 bg-background-light dark:bg-[#102217] border border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-full outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" placeholder="123" type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-2 px-2">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 dark:border-gray-600 checked:bg-primary checked:border-primary transition-all" id="save-card" type="checkbox"/>
+<span class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</span>
+</div>
+<label class="text-sm text-gray-600 dark:text-gray-400 cursor-pointer select-none" for="save-card">Sauvegarder cette carte pour mes futurs paiements</label>
+</div>
+</form>
+</div>
+<!-- Security Badge -->
+<div class="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span>Paiement 100% sécurisé et crypté SSL</span>
+</div>
+</div>
+<!-- Right Column: Summary (Sticky) -->
+<div class="lg:col-span-5 xl:col-span-4">
+<div class="sticky top-24 flex flex-col gap-6">
+<!-- Order Summary Card -->
+<div class="bg-white dark:bg-[#1A2C22] rounded-lg p-6 border border-[#e7f3ec] dark:border-[#2a4536] shadow-sm flex flex-col h-full">
+<div class="mb-6 rounded-lg overflow-hidden h-40 relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Camp d'été" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Happy children running in a field during summer camp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVsKkjdUu_tqHljTxJMpR3HgxKeXEjur1C-sf3ewF359NUP5dWyH14b4RrU2oOIZYkFmU2EomW3-QlrbpKHg36UDAfCQHI21xd6Aw8DudNID266dGZUWQ9MbwI4nXx7963X5fDqyElR1q2ZOuApJhbn7p9RloVAO41vKRClydUdH8iVvbOvV9_wnOe1val-6vEtJtxwmyjsNhv4w0wEAdWMtZhHw5WT8nW4NUpPrXA8CX1bnK6Jjm5vBAdZDeGUnzFHcyQOtXHRA"/>
+<div class="absolute bottom-3 left-3 z-20">
+<span class="bg-primary text-[#0d1b13] text-xs font-bold px-2 py-1 rounded-full">Session Juillet</span>
+</div>
+</div>
+<h2 class="text-xl font-bold mb-1">Camp d'été 2024</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-1">
+<span class="material-symbols-outlined text-base">calendar_month</span> 15-22 Juillet 2024
+                            </p>
+<div class="flex flex-col gap-4 mb-6">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-background-light dark:bg-[#102217] flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Léo Martin</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Participant</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-background-light dark:bg-[#102217] flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">bed</span>
+</div>
+<div>
+<p class="text-sm font-bold">Pension complète</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Hébergement inclus</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-background-light dark:bg-[#102217] flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold">Assurance Annulation</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Incluse</p>
+</div>
+</div>
+</div>
+<div class="border-t border-dashed border-gray-200 dark:border-gray-700 my-2 pt-4 flex flex-col gap-2">
+<div class="flex justify-between text-sm">
+<span class="text-gray-600 dark:text-gray-400">Sous-total</span>
+<span class="font-medium">416,67 €</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600 dark:text-gray-400">TVA (20%)</span>
+<span class="font-medium">33,33 €</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600 dark:text-gray-400">Frais de dossier</span>
+<span class="font-medium text-primary">Offerts</span>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 mt-4 pt-4 mb-6">
+<div class="flex justify-between items-end">
+<span class="text-base font-bold text-gray-800 dark:text-gray-200">Total à payer</span>
+<span class="text-3xl font-extrabold text-[#0d1b13] dark:text-white">450,00 €</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-[#0fd65e] text-[#0d1b13] font-bold text-lg py-4 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
+<span>Payer 450,00 €</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-xs text-center text-gray-400 mt-4">
+                                En validant, vous acceptez nos <a class="underline hover:text-primary" href="#">Conditions Générales de Vente</a>.
+                            </p>
+</div>
+<!-- Need Help Card -->
+<div class="bg-primary/10 dark:bg-primary/5 rounded-lg p-4 border border-primary/20 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-[#0d1b13] shrink-0">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#0d1b13] dark:text-white">Besoin d'aide ?</p>
+<p class="text-xs text-gray-600 dark:text-gray-400">Appelez-nous au <span class="font-bold">01 23 45 67 89</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="mt-auto border-t border-[#e7f3ec] dark:border-[#1e3a29] py-8 bg-white dark:bg-[#1A2C22]">
+<div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+<p>© 2024 Camp d'été. Tous droits réservés.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Confidentialité</a>
+<a class="hover:text-primary" href="#">Mentions légales</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

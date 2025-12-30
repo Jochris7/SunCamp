@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Camp Admin Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6a",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102217",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2e24",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-neutral-900 dark:text-white font-display overflow-hidden selection:bg-primary selection:text-neutral-900">
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation -->
+<aside class="w-72 hidden lg:flex flex-col border-r border-neutral-200 dark:border-neutral-800 bg-surface-light dark:bg-surface-dark h-full shrink-0">
+<div class="flex h-full flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<!-- Brand -->
+<div class="flex items-center gap-3">
+<div class="bg-primary aspect-square rounded-full size-10 flex items-center justify-center text-neutral-900">
+<span class="material-symbols-outlined font-bold">camping</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-neutral-900 dark:text-white text-lg font-bold leading-tight">Camp Admin</h1>
+<p class="text-neutral-500 dark:text-neutral-400 text-xs font-medium">Summer 2024</p>
+</div>
+</div>
+<!-- Menu -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary text-neutral-900 shadow-sm transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">dashboard</span>
+<p class="text-sm font-bold">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">calendar_month</span>
+<p class="text-sm font-medium group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Reservations</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">groups</span>
+<p class="text-sm font-medium group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Campers</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">badge</span>
+<p class="text-sm font-medium group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Staff</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">mail</span>
+<p class="text-sm font-medium group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Messages</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">settings</span>
+<p class="text-sm font-medium group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Settings</p>
+</a>
+</nav>
+</div>
+<!-- Footer User -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-neutral-200 dark:ring-neutral-700" data-alt="User profile avatar of admin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXx60rEyrlKq6xQcpyKadXPOsIcAo8jlg79sMG4-WJFPKrQIWMNS4eQT3kJhHXPiWc6GwnFrVvHK0n6go7t03QmKH4-5yHH9PN23lbcrx2iSZIw0u0LoIQbdaNYxUaF8TJUDYJt8hdxInMRvDTHbhAuDeCwLQiUxYI5qZ-z79HxkJr8NNjpZ5rJB1rRrEg4olbrlj0ysHTqOE2hdvpx2hfNE40TK5rX27YnUAZ9YyEOOgmvSxybGU_Szyv08ZaykAVdcmI5XEbJQ");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-neutral-900 dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-neutral-500 dark:text-neutral-400">Head Counselor</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Layout -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Top Header -->
+<header class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-8 py-4 bg-surface-light dark:bg-surface-dark sticky top-0 z-20">
+<!-- Mobile Menu Button (visible on small screens) -->
+<button class="lg:hidden p-2 -ml-2 text-neutral-600 dark:text-neutral-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex flex-1 max-w-lg">
+<label class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-neutral-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-11 pl-12 pr-4 bg-neutral-100 dark:bg-neutral-800 border-none rounded-full text-sm text-neutral-900 dark:text-white placeholder-neutral-500 focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-neutral-900 transition-all" placeholder="Search campers, bookings..." type="text"/>
+</label>
+</div>
+<div class="flex items-center justify-end gap-4 flex-1">
+<button class="relative p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-surface-light dark:border-surface-dark"></span>
+</button>
+<button class="hidden sm:flex h-10 px-4 items-center justify-center rounded-full bg-primary text-neutral-900 text-sm font-bold gap-2 hover:bg-[#0fdc60] transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        New Camper
+                    </button>
+</div>
+</header>
+<!-- Dashboard Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8">
+<div class="max-w-7xl mx-auto flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl md:text-4xl font-black tracking-tight text-neutral-900 dark:text-white">Bonjour, Admin</h2>
+<p class="text-neutral-500 dark:text-neutral-400 mt-1 font-medium">Here's what's happening at camp today.</p>
+</div>
+<div class="flex gap-2">
+<div class="hidden md:flex items-center gap-2 px-4 py-2 bg-surface-light dark:bg-surface-dark rounded-full border border-neutral-200 dark:border-neutral-700">
+<span class="material-symbols-outlined text-neutral-500 text-[20px]">calendar_today</span>
+<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Mon, June 24, 2024</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-light dark:bg-surface-dark rounded-full border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white text-sm font-bold hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Stat 1 -->
+<div class="p-6 rounded-xl bg-surface-light dark:bg-surface-dark border border-neutral-100 dark:border-none shadow-sm flex flex-col gap-3 group hover:ring-2 hover:ring-primary/20 transition-all">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<span class="flex items-center text-green-600 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full text-xs font-bold">
+                                    +12%
+                                    <span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+</span>
+</div>
+<div>
+<p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">Total Campers</p>
+<p class="text-3xl font-bold text-neutral-900 dark:text-white mt-1">1,240</p>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="p-6 rounded-xl bg-surface-light dark:bg-surface-dark border border-neutral-100 dark:border-none shadow-sm flex flex-col gap-3 group hover:ring-2 hover:ring-primary/20 transition-all">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="flex items-center text-green-600 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded-full text-xs font-bold">
+                                    +8%
+                                    <span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+</span>
+</div>
+<div>
+<p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">Revenue YTD</p>
+<p class="text-3xl font-bold text-neutral-900 dark:text-white mt-1">$450k</p>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="p-6 rounded-xl bg-surface-light dark:bg-surface-dark border border-neutral-100 dark:border-none shadow-sm flex flex-col gap-3 group hover:ring-2 hover:ring-primary/20 transition-all">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">event_seat</span>
+</div>
+<span class="flex items-center text-red-500 bg-red-50 dark:bg-red-900/30 px-2 py-1 rounded-full text-xs font-bold">
+                                    -5%
+                                    <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+</span>
+</div>
+<div>
+<p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">Spots Left</p>
+<p class="text-3xl font-bold text-neutral-900 dark:text-white mt-1">85</p>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="p-6 rounded-xl bg-surface-light dark:bg-surface-dark border border-neutral-100 dark:border-none shadow-sm flex flex-col gap-3 group hover:ring-2 hover:ring-primary/20 transition-all">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<span class="flex items-center text-neutral-500 bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded-full text-xs font-bold">
+                                    0%
+                                    <span class="material-symbols-outlined text-[14px]">remove</span>
+</span>
+</div>
+<div>
+<p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">Staff Count</p>
+<p class="text-3xl font-bold text-neutral-900 dark:text-white mt-1">42</p>
+</div>
+</div>
+</div>
+<!-- Main Grid: Tables & Messages -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Recent Reservations Table -->
+<div class="xl:col-span-2 bg-surface-light dark:bg-surface-dark rounded-xl border border-neutral-100 dark:border-none shadow-sm flex flex-col">
+<div class="p-6 flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800">
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white">Recent Reservations</h3>
+<button class="text-sm font-bold text-primary hover:text-[#0fdc60] transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-neutral-50 dark:bg-neutral-800/50 text-neutral-500 dark:text-neutral-400 font-medium">
+<tr>
+<th class="px-6 py-4 rounded-tl-lg">Camper Name</th>
+<th class="px-6 py-4">Session</th>
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4 rounded-tr-lg">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+<tr class="group hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Profile picture of Leo M." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD1V8RJjix01slILE-Vc0FpikNQZszGDusLOHRzvVp5PDjCEbRtdUoQJ6yE5EKNq8nNba9AKCLM4Su8ZNB8NJcZVMFYKMKWgA035lv3rUlNXVHZG8x0zR_1sVoOWySZhQbPPWiJ6y_mt9v2jTxn_sXZFZPdsx-GgN1eRF7nESka2sQ3YRSFZLl_EUQiVgezCUWeKjlxK3HsVDbQyXEGQ24qDFxsyQhOKLhMHxWWm7i_J3U1VRHDrnLYOZYgcgy0NxmFm6KQcivHyQ");'></div>
+<span class="font-bold text-neutral-900 dark:text-white">Leo M.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-600 dark:text-neutral-300">Adventure Camp (Wk 2)</td>
+<td class="px-6 py-4 text-neutral-500 dark:text-neutral-400">June 24</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                                    Paid
+                                                </span>
+</td>
+</tr>
+<tr class="group hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Profile picture of Sophie K." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSK4SMyQAfbWh3yP9Jf_utTIcL_hGVWX5GtbPi1FqX5MjJIRijSfwOfTp8HTS7_roX4UbNLNKse6CgK6lk4Mrmh_Q0OVlsgUJMrC2vk8ICX7qCh4vxY487pWpLtk25ATTZYLB2usADWISGczEb0AsDGQR95BYhgOARUffjKCksilvacTVpadOeXBPKoEVJI_cmEmsUkRXPN4LmYloLvWmdeSK8mmA_vJUGESiuIwlopPXZXmD5pUmBDYjB9Q1uOpxs6RwiIirHVg");'></div>
+<span class="font-bold text-neutral-900 dark:text-white">Sophie K.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-600 dark:text-neutral-300">Coding Camp (Wk 1)</td>
+<td class="px-6 py-4 text-neutral-500 dark:text-neutral-400">June 23</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                                    Pending
+                                                </span>
+</td>
+</tr>
+<tr class="group hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">
+                                                        AR
+                                                    </div>
+<span class="font-bold text-neutral-900 dark:text-white">Alex R.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-600 dark:text-neutral-300">Sports Camp (Wk 3)</td>
+<td class="px-6 py-4 text-neutral-500 dark:text-neutral-400">June 23</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                                    Paid
+                                                </span>
+</td>
+</tr>
+<tr class="group hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Profile picture of Maya T." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfL8XsrV9WGeFZAiTqayzdj1uheknYM87DmPuPLoYXQ-ckdWAI3qrm6XK4P0gLJFQjuVJZp2jELrlLxJdI5gGyIAjIvOF6yM75vWmPJeYiY7DE6dGET-yJht3Blus_26UEPUoMNmwoBkqGxgju61Ykq-ZbqYSCbkUlP0ihSTYdS8HHZFqXzt8V6QdtS_AUqpzhuob0oZIXLENOP6YDGnNKnFwSd1a8drNX1wk-Tb0ECNfGAgoiIXXB85j6FxnD16Sb1GZOuKGD_w");'></div>
+<span class="font-bold text-neutral-900 dark:text-white">Maya T.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-600 dark:text-neutral-300">Art Studio (Wk 2)</td>
+<td class="px-6 py-4 text-neutral-500 dark:text-neutral-400">June 22</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                                    Cancelled
+                                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Unread Messages Widget -->
+<div class="xl:col-span-1 bg-surface-light dark:bg-surface-dark rounded-xl border border-neutral-100 dark:border-none shadow-sm flex flex-col">
+<div class="p-6 flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800">
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white">Unread Messages</h3>
+<div class="bg-primary text-neutral-900 text-xs font-bold px-2 py-0.5 rounded-full">3 New</div>
+</div>
+<div class="flex-1 p-4 flex flex-col gap-4">
+<!-- Message Item 1 -->
+<div class="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Profile picture of parent Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjI_nqMFnA1u0J1_GaxRdeN5BBGJEM5MjH9CIXYA3G_hwJM553kjBOV_Vbb3px2GyJZjj1olLtk5yAvn-kNX08JrOq4gE4owwgW2RiDWIqY842BOHNBOHaLzmNy4dgiN-UElIgpzk6wVY3ms2uS4CP5fmjmAF3O3zUUntKc99VTAuOiGNbBe7n5L6BTfFR9EBJHh-YC-TOig4CK3FxeJeF3-NeL7gtFC_negW_X_U5gXHC9_NMYUl3D80vDRhn6I-GAiVYpUmQqg");'></div>
+<p class="font-bold text-sm text-neutral-900 dark:text-white">Jane Doe</p>
+</div>
+<p class="text-xs text-neutral-400">2m ago</p>
+</div>
+<p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Hi, I had a question about the dietary restrictions for the lunch menu...</p>
+<div class="mt-3 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-xs font-bold text-primary flex items-center gap-1">
+                                            Reply <span class="material-symbols-outlined text-[14px]">reply</span>
+</button>
+</div>
+</div>
+<!-- Message Item 2 -->
+<div class="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs">MK</div>
+<p class="font-bold text-sm text-neutral-900 dark:text-white">Mike K.</p>
+</div>
+<p class="text-xs text-neutral-400">1h ago</p>
+</div>
+<p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Is it too late to switch my son from Week 2 to Week 3?</p>
+<div class="mt-3 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-xs font-bold text-primary flex items-center gap-1">
+                                            Reply <span class="material-symbols-outlined text-[14px]">reply</span>
+</button>
+</div>
+</div>
+<button class="w-full py-3 text-sm font-bold text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors border border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl">
+                                    View All Messages
+                                </button>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-neutral-100 dark:border-none shadow-sm p-6 mb-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white">Registration Trends</h3>
+<p class="text-sm text-neutral-500 dark:text-neutral-400">New sign-ups over the last 30 days</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<p class="text-2xl font-bold text-neutral-900 dark:text-white tracking-tight">+24</p>
+<p class="text-xs text-green-600 font-bold">This Week</p>
+</div>
+<select class="bg-neutral-100 dark:bg-neutral-800 border-none rounded-lg text-sm font-medium px-3 py-2 text-neutral-700 dark:text-neutral-300 focus:ring-primary">
+<option>Last 30 Days</option>
+<option>Last 3 Months</option>
+<option>YTD</option>
+</select>
+</div>
+</div>
+<!-- Chart Visualization -->
+<div class="relative w-full h-64">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 200">
+<!-- Grid Lines -->
+<line class="text-neutral-100 dark:text-neutral-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line class="text-neutral-100 dark:text-neutral-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="100" y2="100"></line>
+<line class="text-neutral-100 dark:text-neutral-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<!-- Gradient Fill Area -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#13ec6a" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#13ec6a" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,150 Q100,100 200,120 T400,80 T600,60 T800,90 T1000,40 V200 H0 Z" fill="url(#chartGradient)"></path>
+<!-- The Line -->
+<path d="M0,150 Q100,100 200,120 T400,80 T600,60 T800,90 T1000,40" fill="none" stroke="#13ec6a" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<!-- Data Points -->
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary" cx="200" cy="120" r="4" stroke-width="3"></circle>
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary" cx="400" cy="80" r="4" stroke-width="3"></circle>
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary" cx="600" cy="60" r="4" stroke-width="3"></circle>
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary" cx="800" cy="90" r="4" stroke-width="3"></circle>
+<!-- Tooltip simulation -->
+<g transform="translate(600, 30)">
+<rect class="fill-neutral-900 dark:fill-white" height="30" rx="6" width="60" x="-30" y="-25"></rect>
+<text class="fill-white dark:fill-neutral-900 text-xs font-bold" text-anchor="middle" x="0" y="-6">42 New</text>
+<path class="fill-neutral-900 dark:fill-white" d="M-5,5 L0,10 L5,5"></path>
+</g>
+</svg>
+<!-- X Axis Labels -->
+<div class="flex justify-between mt-2 text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

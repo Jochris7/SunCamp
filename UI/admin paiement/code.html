@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion des paiements - Camp Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght,FILL@100..900,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6a",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102217",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2e24",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-hidden selection:bg-primary selection:text-black">
+<div class="flex h-screen w-full">
+<!-- Sidebar -->
+<aside class="w-72 flex-shrink-0 bg-surface-light dark:bg-surface-dark border-r border-slate-100 dark:border-slate-800 hidden lg:flex flex-col h-full justify-between p-4 z-20">
+<div class="flex flex-col gap-6">
+<!-- User Profile -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-sm relative" data-alt="Profile picture of the camp administrator showing a smiling face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUACyCqZ5zkhAF6QNMDrXlqnv2ixYxsaV6mXh8Um3Rbez6ATzsHsvD-czZZlUZskEMB3TB9E4Bt-iBUnSjQ7JuZQ-UUGSdgDPGwgymqR3m-dVFkobEQ4oMPedz2ExQw6ADv2EuxW1MkR6c09y6cN0gXAzvJuWtUXFJgGwMYiyLjK0neyUIa8fluWf7g1nfqpt36bxBEjgm3oaeRLVAHr0xeWfVtU13Yb_q-r6_xeO3JJnwebEbrGWAxvqGooYubMecvmX6__ESFQ");'>
+<div class="absolute bottom-0 right-0 size-3 bg-primary rounded-full border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Camp Admin</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Gestionnaire</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium">Tableau de bord</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">groups</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium">Campeurs</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">badge</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium">Personnel</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">calendar_month</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium">Planning</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary/10 text-primary dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined material-symbols-filled">payments</span>
+<p class="text-slate-900 dark:text-primary text-sm font-bold">Paiements</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2 p-2">
+<button class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-red-50 text-slate-500 hover:text-red-600 transition-colors w-full">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Déconnexion</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="flex-1 overflow-y-auto">
+<div class="max-w-[1400px] mx-auto p-4 md:p-8 flex flex-col gap-8">
+<!-- Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-extrabold tracking-tight">Gestion des paiements</h2>
+<p class="text-slate-500 dark:text-slate-400 text-base">Suivi des transactions, des soldes et de la santé financière</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 h-10 px-6 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white text-sm font-bold hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span>Exporter CSV</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-6 rounded-full bg-primary text-slate-900 text-sm font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Nouveau paiement</span>
+</button>
+</div>
+</header>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="flex flex-col gap-1 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Facturé</p>
+<div class="size-8 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">150 000 €</p>
+<div class="flex items-center gap-1 text-green-600 dark:text-green-400 mt-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="text-xs font-bold">+12% vs 2023</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-1 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5 shadow-sm relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-primary/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-2 relative z-10">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Reçu (Encaissé)</p>
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-green-700 dark:text-primary">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight relative z-10">112 000 €</p>
+<div class="flex items-center gap-1 text-green-600 dark:text-green-400 mt-1 relative z-10">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span class="text-xs font-bold">+15% cette semaine</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-1 p-6 rounded-2xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Reste à percevoir</p>
+<div class="size-8 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[20px]">pending</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">38 000 €</p>
+<div class="flex items-center gap-1 text-orange-600 dark:text-orange-400 mt-1">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="text-xs font-bold">5% de retard</span>
+</div>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="flex flex-col lg:flex-row gap-4 justify-between items-center bg-white dark:bg-surface-dark p-2 rounded-[1.5rem] border border-slate-100 dark:border-white/5 shadow-sm">
+<!-- Search -->
+<div class="relative w-full lg:w-96">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-white/5 border-none rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-black/20 transition-all text-sm font-medium" placeholder="Rechercher par nom, ID ou parent..." type="text"/>
+</div>
+<!-- Status Chips -->
+<div class="flex gap-2 overflow-x-auto pb-2 lg:pb-0 w-full lg:w-auto px-2 lg:px-0 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-bold shadow-md">
+                                Tous
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+                                Payé
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+                                Partiel
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+                                En retard
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+                                En attente
+                            </button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-surface-dark rounded-3xl border border-slate-100 dark:border-white/5 shadow-sm overflow-hidden flex-1 flex flex-col min-h-[500px]">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/5">
+<th class="p-4 pl-6 w-12">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Campeur</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Groupe</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider w-1/4">Progression Paiement</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Reste Dû</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center">Statut</th>
+<th class="p-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-white/5">
+<!-- Row 1: Paid -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="p-4 pl-6">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of a young boy camper smiling outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCz8DV20xc2vccnCaTnPCT66LxsXtVvRuIdVyEzaGZ-B_f7st-btQXW89GieFpuMaIDItF0ARxD7zuYfjIIk5Ml33MLfkiXS2l-RLNi5B6GffPEoBuwQbh4j4CceZaZzpp91EJmN8mnx0G8Np3_uqlVHksXLkO1XGj8Y3NaxULNrILnGkwDYp8CtkYd4TBShUJQ5K3e1uzQ16tRwxvlEV-hBI5dHRazorRq14h1jLrqVGYs40bIsNflcD9ZWN1oNVhpxq5s4rd10Q");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Léo Martin</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Parent: Sophie Martin</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                                Juillet - Semaine 2
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">450 € payés</span>
+<span class="text-slate-400">sur 450 €</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-white/10 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="text-sm font-bold text-slate-400">0 €</span>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-primary/20 dark:text-primary">
+<span class="material-symbols-outlined text-[14px]">check</span> Payé
+                                            </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Partial -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="p-4 pl-6">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of a young girl camper smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqvzf7Wi62OXJALvfwsfmMf_qPUaKH-aTEd-CfKqtvVmpcaGdTx_zLQj-sZUkLRCC1iRsIYIhPlMFp_DAQctCcZhYOdPZ-nyzD_DSYfMI01OPOa4ydacAvp9ED_t7fu3iSbLRfzLsrwcpvde6l0n6W7BSjbOSYg533VPtBNiqIePFEeU0iMLY4ihnXNyMXzgEKOwVNSyHXtYOprVKpDGwszxfSa6Ax2JDRMcZElJ2FEZ1sMVAoLBfeUtbcID83fxD5Tz3jIWX-IQ");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Emma Dubois</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Parent: Jean Dubois</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                                                Août - Semaine 1
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">225 € payés</span>
+<span class="text-slate-400">sur 450 €</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-white/10 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-white">225 €</span>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined text-[14px]">pie_chart</span> Partiel
+                                            </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Overdue -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/5 transition-colors bg-red-50/30 dark:bg-red-900/10">
+<td class="p-4 pl-6">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full flex items-center justify-center bg-indigo-100 text-indigo-600 font-bold text-sm">
+                                                    LB
+                                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Lucas Bernard</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Parent: Marc Bernard</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                                Juillet - Semaine 2
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">0 € payés</span>
+<span class="text-slate-400">sur 450 €</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-white/10 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full w-0"></div>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="text-sm font-bold text-red-600 dark:text-red-400">450 €</span>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+<span class="material-symbols-outlined text-[14px]">warning</span> En retard
+                                            </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Pending -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="p-4 pl-6">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of a teenage girl camper with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDgELj032HtpUqvzd5h_vHe7jg3hHGXlR6rHrPANdOSMCTyhw_laGQR6YTsq42YuyL8Wmli2Tpb3ITZBwwrmt-_0RnUEm8aXGtw3GLiCEqqIqCYEiWC4LUulTq4UX0dKkJjKf4ZuYCiavReqGkMTSX7OGMkbn8kKEkUIanQHZ8XZk1PZorF2ObKOG6vWiaINyeO19nB1YTbkin4tX8CidJ4uowrbwLrypqW92upSFEpqijJuoBZxrKqeY00xdnQH8NQYc8TsExXaA");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Chloé Petit</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Parent: Anne Petit</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                                                Aventure - Session 1
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">En attente</span>
+<span class="text-slate-400">sur 600 €</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-white/10 rounded-full h-2">
+<div class="bg-slate-300 dark:bg-white/20 h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="text-sm font-bold text-slate-900 dark:text-white">600 €</span>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300">
+<span class="material-symbols-outlined text-[14px]">hourglass_empty</span> En attente
+                                            </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Paid -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="p-4 pl-6">
+<input class="rounded border-slate-300 text-primary focus:ring-primary size-4 bg-white dark:bg-white/10 dark:border-white/20" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of a young boy camper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8V_fLzb-2TgLguRTMnb9Q6SFYcFxWgx_zGXa7_hF7XCZ4VVZPdfnQRX4a2QhgW1p1LqPa2Yp5eclY5DoURyOsx9xRG2BLEZonTe1C5SynslTpBlKxljyLIpqOYiu8xLKKdRiEaSl6ceJ8AVhCFYQIh9ofS_BcuLeCcAnimIvp5o5S8zUduolr_Tn6PDP-aHQ1-Bj9BEHIwXBFMjq9YKBNoLFlBpolCffy29hPPUqpnMa25itqL17z86ncFBGkCzMrEHOuBWaarg");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Hugo Leroy</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Parent: Pierre Leroy</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                                Juillet - Semaine 2
+                                            </span>
+</td>
+<td class="p-4">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">450 € payés</span>
+<span class="text-slate-400">sur 450 €</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-white/10 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="text-sm font-bold text-slate-400">0 €</span>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-primary/20 dark:text-primary">
+<span class="material-symbols-outlined text-[14px]">check</span> Payé
+                                            </span>
+</td>
+<td class="p-4 text-center">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Simple Footer) -->
+<div class="p-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Affichage de 1 à 5 sur 128 résultats</span>
+<div class="flex gap-2">
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
