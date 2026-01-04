@@ -8,10 +8,11 @@ exports.createReservation = async (req, res) => {
         });
 
         const savedReservation = await newReservation.save();
-        
+        console.log(savedReservation)
         res.status(201).json({
             message: "Réservation enregistrée ! Veuillez procéder au paiement.",
             reservationId: savedReservation._id,
+            statut: savedReservation.statutPaiement,
             montantAPayer: `${savedReservation.montantTotal} CFA`
         });
     } catch (error) {

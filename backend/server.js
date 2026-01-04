@@ -31,7 +31,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/api/admin', adminRoutes);
 app.use('/api/colonies', colonieRoutes)
 app.use('/api/contacts', contactRoutes)
-app.use('/api/reservation',reservationRoutes)
+app.use('/api/reservations',reservationRoutes)
 
 
 app.listen(PORT, ()=>{
