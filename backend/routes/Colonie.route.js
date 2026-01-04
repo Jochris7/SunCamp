@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const colonieCtrl = require('../controllers/Colonie.Controller');
+const simpleUploader = require('../middlewares/simpleUploader')
 
-router.post('/', colonieCtrl.createColonie);          // POST http://localhost:3000/api/colonies
-router.get('/', colonieCtrl.getAllColonies);         // GET  http://localhost:3000/api/colonies
-router.get('/:id', colonieCtrl.getColonieById);      // GET  http://localhost:3000/api/colonies/ID_ICI
-router.put('/:id', colonieCtrl.updateColonie);       // PUT  http://localhost:3000/api/colonies/ID_ICI
-router.delete('/:id', colonieCtrl.deleteColonie);    // DEL  http://localhost:3000/api/colonies/ID_ICI
+
+router.post('/',simpleUploader, colonieCtrl.createColonie);
+router.get('/', colonieCtrl.getAllColonies);
+router.get('/:id', colonieCtrl.getColonieById);
+router.put('/:id',simpleUploader, colonieCtrl.updateColonie);
+router.delete('/:id', colonieCtrl.deleteColonie);
 
 module.exports = router;

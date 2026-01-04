@@ -3,10 +3,26 @@ const Colonie = require('../models/Colonie');
 
 exports.createColonie = async (req, res) => {
     try {
-        const newColonie = await Colonie.create(req.body);
-        res.status(201).json(newColonie);
+        let imagePaths = [];
+        if (req.files) {
+            imagePaths = req.files.map(file =>
+                `${req.protocol}://${req.get('host')}/public/images/colonies/${file.filename}`
+            );
+        }
+
+        const newColonie = new Colonie({
+            ...req.body,
+            images: imagePaths
+        });
+
+        const savedColonie = await newColonie.save();
+        res.status(201).json(savedColonie);
+
     } catch (error) {
-        res.status(400).json({ message: "Erreur lors de la création", error: error.message });
+        res.status(400).json({
+            message: "Erreur lors de la création",
+            error: error.message
+        });
     }
 };
 
