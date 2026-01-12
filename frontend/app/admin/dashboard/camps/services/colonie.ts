@@ -1,7 +1,7 @@
 "use server"
 
 export interface IColonie {
-    _id?: string;
+    _id: string;
     titre: string;
     description: string;
     images: string[];

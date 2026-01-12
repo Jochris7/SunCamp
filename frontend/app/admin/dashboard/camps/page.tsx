@@ -15,7 +15,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#fdfaf7] font-sans antialiased text-[#4a3f35] overflow-x-hidden">
       <div className="max-w-7xl mx-auto py-10 px-8">
         <span className="text-[20px] font-black text-[#0f0e0d] uppercase tracking-[0.4em] block border-l-4 border-[#c4a484] pl-6">
-          Dashboard Admin
+          Dashboard Admin Camps
         </span>
       </div>
 
