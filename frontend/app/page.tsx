@@ -9,6 +9,8 @@ import {
   Star,
   Phone
 } from 'lucide-react';
+import Link from 'next/link';
+
 
 export default function Home() {
   return (
@@ -29,9 +31,9 @@ export default function Home() {
 
         <nav className="relative z-20 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
           <div className="flex gap-8 text-white font-medium uppercase tracking-widest text-sm">
-            <a href="#" className="hover:text-[#c4a484] transition-colors">Accueil</a>
-            <a href="#" className="hover:text-[#c4a484] transition-colors">À Propos</a>
-            <a href="#" className="hover:text-[#c4a484] transition-colors">Blog</a>
+            <Link href="/" className="hover:text-[#c4a484] transition-colors">Accueil</Link>
+            <Link href="/" className="hover:text-[#c4a484] transition-colors">À Propos</Link>
+            <Link href="/contact" className="hover:text-[#c4a484] transition-colors">Contact</Link>
           </div>
           <div className="flex gap-4">
             <button className="px-6 py-2 bg-[#c4a484] text-white rounded-md font-bold text-xs uppercase hover:bg-[#a68a6d] transition-all">

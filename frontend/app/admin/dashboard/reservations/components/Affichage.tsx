@@ -49,11 +49,11 @@ function ReservationTable({ initialData }: ReservationTableProps) {
             const firstParticipant = res.participants?.[0];
             const fullName = `${firstParticipant?.prenom || ''} ${firstParticipant?.nom || ''}`.toLowerCase();
             const email = res.emailContact?.toLowerCase() || "";
-            const colonieTitle = typeof res.colonie === 'object' ? res.colonie?.titre?.toLowerCase() : "";
+            const colonieTitle = (res.colonie && typeof res.colonie === 'object' && 'titre' in res.colonie) ? (res.colonie.titre?.toLowerCase() || ""): "";
 
             return (
-                fullName.includes(search) || 
-                email.includes(search) || 
+                fullName.includes(search) ||
+                email.includes(search) ||
                 colonieTitle?.includes(search) ||
                 res._id?.toLowerCase().includes(search)
             );
